@@ -10,22 +10,20 @@ import java.util.regex.Pattern;
 public class ReadIPFromFile {
     public static final String blackListFile = "IP_BLACKLIST.txt";
 
-    public void checkBlackIp(String ipForCheck) {
+    public String checkBlackIp(String ipForCheck) {
         if (checkFormatIP(ipForCheck)) {
             String[] blackIP = getFromFile(blackListFile).trim().split("\r\\n");
             if (Arrays.asList(blackIP).contains(ipForCheck)) {
-                System.out.println("IP in BLACK LIST!");
-                return;
+                return "IP in BLACK LIST!";
             }
-            System.out.println("IP in WHITE LIST!");
-            return;
+            return "IP in WHITE LIST!";
         }
-        System.out.println("WRONG FORMAT IP");
+        return "WRONG FORMAT IP";
     }
 
     private boolean checkFormatIP(String ip) {
-        String emailRegex = "\\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}\\b";
-        Pattern pattern = Pattern.compile(emailRegex);
+        String ipRegex = "\\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}\\b";
+        Pattern pattern = Pattern.compile(ipRegex);
         Matcher matcher = pattern.matcher(ip);
         return matcher.matches();
     }

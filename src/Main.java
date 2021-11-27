@@ -9,7 +9,7 @@ public class Main {
         Scanner scanIp = new Scanner(System.in);
         while (true) {
             String ip = scanIp.nextLine();
-            readIPFromFile.checkBlackIp(ip);
+            System.out.println(readIPFromFile.checkBlackIp(ip));
         }
     }
 }
