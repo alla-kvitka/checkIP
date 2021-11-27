@@ -8,10 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ReadIPFromFile {
+    public static final String blackListFile = "IP_BLACKLIST.txt";
 
     public void checkIp(String ipForCheck) {
         if (checkFormatIP(ipForCheck)) {
-            String[] blackIP = getFromFile("IP_BLACKLIST.txt").trim().split("\r\\n");
+            String[] blackIP = getFromFile(blackListFile).trim().split("\r\\n");
             if (Arrays.asList(blackIP).contains(ipForCheck)) {
                 System.out.println("IP in BLACK LIST!");
                 return;
@@ -29,7 +30,7 @@ public class ReadIPFromFile {
         return matcher.matches();
     }
 
-    public String getFromFile(String filename) {
+    private String getFromFile(String filename) {
         StringBuilder sb = new StringBuilder();
         Scanner scanner = null;
         try {
