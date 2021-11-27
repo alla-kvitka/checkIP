@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class ReadIPFromFile {
     public static final String blackListFile = "IP_BLACKLIST.txt";
 
-    public void checkIp(String ipForCheck) {
+    public void checkBlackIp(String ipForCheck) {
         if (checkFormatIP(ipForCheck)) {
             String[] blackIP = getFromFile(blackListFile).trim().split("\r\\n");
             if (Arrays.asList(blackIP).contains(ipForCheck)) {
