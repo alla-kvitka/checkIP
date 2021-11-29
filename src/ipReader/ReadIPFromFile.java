@@ -9,9 +9,15 @@ import java.util.regex.Pattern;
 
 public class ReadIPFromFile {
     public static final String blackListFile = "IP_BLACKLIST.txt";
+    Scanner scanIp = new Scanner(System.in);
 
-    public String checkBlackIp(String ipForCheck) {
+    public void getIpFromConsole() {
+        while (true) {
+            System.out.println(checkBlackIp(scanIp.nextLine()));
+        }
+    }
 
+    private String checkBlackIp(String ipForCheck) {
         if (checkFormatIP(ipForCheck)) {
             String[] blackIP = getFromFile(blackListFile).trim().split("\r\\n");
             if (Arrays.asList(blackIP).contains(ipForCheck)) {
@@ -30,7 +36,7 @@ public class ReadIPFromFile {
     }
 
     private String getFromFile(String filename) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder getStringFromFileResult = new StringBuilder();
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(filename), "Windows-1251");
@@ -40,9 +46,10 @@ public class ReadIPFromFile {
         while (true) {
             assert scanner != null;
             if (!scanner.hasNextLine()) break;
-            sb.append(scanner.nextLine()).append(System.lineSeparator());
+            getStringFromFileResult.append(scanner.nextLine())
+                    .append(System.lineSeparator());
         }
         scanner.close();
-        return sb.toString().trim();
+        return getStringFromFileResult.toString().trim();
     }
 }
