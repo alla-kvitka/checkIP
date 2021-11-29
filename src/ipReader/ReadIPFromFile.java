@@ -11,7 +11,7 @@ public class ReadIPFromFile {
     public static final String blackListFile = "IP_BLACKLIST.txt";
     Scanner scanIp = new Scanner(System.in);
 
-    public void getIpFromConsole() {
+    public void getIpFromConsoleAndCheck() {
         while (true) {
             System.out.println(checkBlackIp(scanIp.nextLine()));
         }
