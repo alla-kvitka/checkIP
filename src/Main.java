@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanIp = new Scanner(System.in);
-        while (true) {
+        while (!scanIp.nextLine().equalsIgnoreCase("stop")) {
             String ip = scanIp.nextLine();
             System.out.println(readIPFromFile.checkBlackIp(ip));
         }

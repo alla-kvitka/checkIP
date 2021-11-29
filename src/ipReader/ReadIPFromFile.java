@@ -11,6 +11,7 @@ public class ReadIPFromFile {
     public static final String blackListFile = "IP_BLACKLIST.txt";
 
     public String checkBlackIp(String ipForCheck) {
+
         if (checkFormatIP(ipForCheck)) {
             String[] blackIP = getFromFile(blackListFile).trim().split("\r\\n");
             if (Arrays.asList(blackIP).contains(ipForCheck)) {
